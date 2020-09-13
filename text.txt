@@ -1,0 +1,32 @@
+1. Find all the information about each film
+ db.films.find().pretty()
+2. Find the title of each film
+ db.films.find({},{title:1}).pretty()
+3. Find the director of each film
+db.films.find({},{director:1})
+4. Find the title and director of each film
+db.films.find({},{title:1,director:1}).pretty()
+5. Find the title and year of each film
+db.films.find({},{title:1,year:1})
+6. Find the movie with a row id of 6
+db.films.find({id:6}).pretty()
+7. Find the movies released in the years between 2000 and 2010
+db.films.find({year:{$gt:2000,$lt:2010}}).pretty()
+8. Find the movies not released in the years between 2000 and 2010
+db.films.find({year:{$not:{$gt:2000,$lt:2010}}}).pretty()
+9. Find the first 5 Pixar movies and their release year
+db.films.find({},{title:1,year:1}).limit(5)
+10. Find all the Toy Story movies
+db.films.find({title:/Toy Story/}).pretty()
+11.Find all the movies directed by John Lasseter
+db.films.find({director:"John Lasseter"}).pretty()
+12.Find all the movies (and director) not directed by John Lasseter
+db.films.find({director:{$not:/John Lasseter/}})
+13. Find all the WALL-* movies
+db.films.find({title:/WALL-/}).pretty()
+14. List the last four Pixar movies released (ordered from most recent to least)
+db.films.find({},{title:1}).sort({year:-1})
+15.List the first five Pixar movies sorted alphabetically
+db.films.find({},{title:1}).sort({title:1}).limit(5)
+16.List the next five Pixar movies sorted alphabetically
+db.films.find({},{title:1}).sort({title:1}).skip(5).limit(5)

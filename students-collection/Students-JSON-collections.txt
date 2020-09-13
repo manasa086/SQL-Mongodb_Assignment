@@ -1,0 +1,5 @@
+Students Collection
+1. Find all the students whos age is between 21 - 30
+db.student.find({age:{$gte:21,$lte:30}}).pretty()
+2. Find all students whos age is between 21 - 30 and height is greater than 5
+db.student.find({age:{$gte:21,$lte:30},height:{$gt:5}}).pretty()
